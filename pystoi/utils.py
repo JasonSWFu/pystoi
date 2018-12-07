@@ -94,7 +94,7 @@ def remove_silent_frames(x, y, dyn_range, framelen, hop):
         x_sil[range(i * hop, i * hop + framelen)] += x_frames[i, :]
         y_sil[range(i * hop, i * hop + framelen)] += y_frames[i, :]
         
-	return x_sil[0:i * hop + framelen-1], y_sil[0:i * hop + framelen-1]
+return x_sil[0:i * hop + framelen-1], y_sil[0:i * hop + framelen-1]
 
 
 def vect_two_norm(x, axis=-1):
