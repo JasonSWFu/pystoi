@@ -87,14 +87,14 @@ def remove_silent_frames(x, y, dyn_range, framelen, hop):
     y_frames = y_frames[mask]
 
     # init zero arrays to hold x, y with silent frames removed
-    x_sil = np.zeros((mask.shape[0] - 1) * hop + framelen)
-    y_sil = np.zeros((mask.shape[0] - 1) * hop + framelen)
-
+    x_sil = np.zeros(x.shape)
+    y_sil = np.zeros(y.shape)
+    
     for i in range(x_frames.shape[0]):
         x_sil[range(i * hop, i * hop + framelen)] += x_frames[i, :]
         y_sil[range(i * hop, i * hop + framelen)] += y_frames[i, :]
-
-    return x_sil, y_sil
+        
+	return x_sil[0:i * hop + framelen-1], y_sil[0:i * hop + framelen-1]
 
 
 def vect_two_norm(x, axis=-1):
